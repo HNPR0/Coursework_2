@@ -3,36 +3,36 @@
 
 void gpio_setup_pin_direction(uint8 port_num, uint8 pin_num, uint8 direction)
 {
-	switch(port_num)
+	switch(port_num) //check port selected to configure
 	{
 	case 1:
 		if(direction == 1)
 		{
-			SET_BIT(DDRB,pin_num);
+			SET_BIT(DDRB,pin_num); //set pin as output
 		}
 		else
 		{
-			CLEAR_BIT(DDRB,pin_num);
+			CLEAR_BIT(DDRB,pin_num); //set pin as input
 		}
 		break;
 	case 2:
 		if(direction == 1)
 		{
-			SET_BIT(DDRC,pin_num);
+			SET_BIT(DDRC,pin_num); //set pin as output
 		}
 		else
 		{
-			CLEAR_BIT(DDRC,pin_num);
+			CLEAR_BIT(DDRC,pin_num); //set pin as input
 		}
 		break;
 	case 3:
 		if(direction == 1)
 		{
-			SET_BIT(DDRD,pin_num);
+			SET_BIT(DDRD,pin_num); //set pin as output
 		}
 		else
 		{
-			CLEAR_BIT(DDRD,pin_num);
+			CLEAR_BIT(DDRD,pin_num); //set pin as input
 		}
 		break;
 	}
@@ -40,10 +40,11 @@ void gpio_setup_pin_direction(uint8 port_num, uint8 pin_num, uint8 direction)
 
 void gpio_write_pin(uint8 port_num, uint8 pin_num, uint8 value)
 {
-   	if(value == 1)
+   	if(value == 1) // Check if pin value is high
     {
-    	switch(port_num)
+    	switch(port_num) // Check port selected
     	{
+		// Set the pin high
     	case 1:
     		SET_BIT(PORTB,pin_num); 
     		break;
@@ -55,9 +56,9 @@ void gpio_write_pin(uint8 port_num, uint8 pin_num, uint8 value)
     		break;
     	}
     }
-    else
+    else // Pin value is low
     {
-    	switch(port_num)
+    	switch(port_num) // Check port selected
     	{
     	case 1:
     		CLEAR_BIT(PORTB,pin_num);
@@ -76,54 +77,54 @@ void gpio_write_pin(uint8 port_num, uint8 pin_num, uint8 value)
 uint8 gpio_read_pin(uint8 port_num, uint8 pin_num)
 {
     uint8 pin_value = 0;
-	switch(port_num)
+	switch(port_num) // Check port selected
 	{
 	    case 1:
-	    	if(BIT_IS_SET(PINB,pin_num))
+	    	if(BIT_IS_SET(PINB,pin_num)) // Check if pin is high
 	    	{
 	    		pin_value = 1;
 	    	}
-	    	else
+	    	else // Pin is low
 	    	{
 	    		pin_value = 0;
 	    	}
 	    	break;
 	    case 2:
-	    	if(BIT_IS_SET(PINC,pin_num))
+	    	if(BIT_IS_SET(PINC,pin_num)) // Check if pin is high
 	    	{
 	    		pin_value = 1;
 	    	}
-	    	else
+	    	else // Pin is low
 	    	{
 	    		pin_value = 0;
 	    	}
 	    	break;
 	    case 3:
-	    	if(BIT_IS_SET(PIND,pin_num))
+	    	if(BIT_IS_SET(PIND,pin_num)) // Check if pin is high
 	    	{
 	    		pin_value = 1;
 	    	}
-	    	else
+	    	else // Pin is low
 	    	{
 	    		pin_value = 0;
 	    	}
 	    	break;
 	}
-    return pin_value;
+    return pin_value; // Return pin value
 }
 
 void gpio_setup_port_direction(uint8 port_num, uint8 direction)
 {
-	switch(port_num)
+	switch(port_num) // Check port selected
 	{
 	case 1:
-		DDRB = direction;
+		DDRB = direction; // Set port B direction
 		break;
 	case 2:
-		DDRC = direction;
+		DDRC = direction; // Set port C direction
 		break;
 	case 3:
-		DDRD = direction;
+		DDRD = direction; // Set port D direction
 		break;
 	}
 }
@@ -131,16 +132,16 @@ void gpio_setup_port_direction(uint8 port_num, uint8 direction)
 
 void gpio_write_port(uint8 port_num, uint8 value)
 {
-	switch(port_num)
+	switch(port_num) // Check port selected
 	{
 	case 1:
-		PORTB = value;
+		PORTB = value; // Write value to port B
 		break;
 	case 2:
-		PORTC = value;
+		PORTC = value; // Write value to port C
 		break;
 	case 3:
-		PORTD = value;
+		PORTD = value; // Write value to port D
 		break;
 	}
 }
@@ -149,17 +150,17 @@ void gpio_write_port(uint8 port_num, uint8 value)
 uint8 gpio_read_port(uint8 port_num)
 {
 	uint8 value = 0;
-	switch(port_num)
+	switch(port_num) // Check port selected
 	{
 	case 1:
-		value = PINB;
+		value = PINB; // Read value from port B
 		break;
 	case 2:
-		value = PINC;
+		value = PINC; // Read value from port C
 		break;
 	case 3:
-		value = PIND;
+		value = PIND; // Read value from port D
 		break;
 	}
-	return value;
+	return value; // Return port value
 }
