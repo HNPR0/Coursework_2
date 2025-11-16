@@ -13,8 +13,9 @@ This report details the design, development, and implementation of an embedded H
 The primary objective of this project, is to create a robust interface that bridges the gap between digital sensors and a human operator. The system provides a practical and interactive solution for monitoring critical environmental parameters, similar to an in-vehicle display or an industrial control panel.
 
 The core functionality is twofold, allowing the user to switch between two distinct monitoring modes:
-1.	Temperature Monitoring: Utilizes an LM35 analogue temperature sensor to provide real-time temperature readings.
-2.	Light Intensity Monitoring: Employs a Light Dependent Resistor (LDR) to measure ambient light levels.
+
+1. Temperature Monitoring: Utilizes an LM35 analogue temperature sensor to provide real-time temperature readings.
+2. Light Intensity Monitoring: Employs a Light Dependent Resistor (LDR) to measure ambient light levels.
 
 A key feature of this HMI is its user-configurable alert system. An operator can use an analogue button interface to dynamically set upper and lower threshold limits (High Limit and Low Limit) for both temperature and light intensity.
 
@@ -173,7 +174,6 @@ The loop timing is influenced by LCD, ADC, and delay functions, reducing real-ti
 
 The keypad shield occupies several digital pins, limiting available GPIOs for expanding the system with more sensors or peripherals.
 
-
 ```plantuml
 @startuml
 start
@@ -306,17 +306,21 @@ stop
 The LED module provides on/off control of a status LED used for alerting the user when sensor readings exceed configured limits.
 
 **Hardware Connection:**  
+
 - LED connected to PB0 on the ATmega328P.
 
 **Functions:**  
+
 - `led_init()` – Initialize LED pin as output and turn it off.  
 - `led_on()` – Turn the LED on.  
 - `led_off()` – Turn the LED off.
 
 **Interaction:**  
+
 - Called by the Application layer when sensor reading goes out of bounds.
 
 **Implementation Logic:**  
+
 - Uses the GPIO driver to set the pin HIGH or LOW.  
 - Keeps the LED off by default until an alert condition occurs.
 
@@ -430,7 +434,6 @@ The Application layer uses button input to adjust thresholds, change sensor mode
 **Implementation Logic:**
 Samples the ADC reading and compares it to predefined voltage ranges.
 Implements software debouncing using short delays or averaging multiple readings.
-
 
 ## Integration and Configuration
 
@@ -604,7 +607,6 @@ package "MCAL Layer" <<MCAL>> {
 ```
 
 ### Configuration
-
 
 | Name                 | Value range    | Description |
 |----------------------|----------------|-------------|
