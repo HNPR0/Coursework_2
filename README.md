@@ -1,7 +1,7 @@
 ## Embedded Systems Project Report: [Project name]
 
 ## 1. Introduction
-
+This report details the design, development, and implementation of an embedded Human Machine Interface (HMI) for real-time environmental monitoring. The system is built upon the AVR ATmega328P microcontroller and programmed in native C, adhering to a modular, driver-based software architecture.
 
 ## 2. Project Code
 
@@ -14,20 +14,20 @@
 ## 3. Test Cases
 
 Test Cases are developed in **[Robot Framework](https://robotframework.org/)** Test steps
-[robot_tests](./test/assignment_test_cases.robot)
+[robot_tests](./test/testCases.robot)
 
 ## 4. Bill of Materials (BOM)
 
 **BOM**
-[bom_file](./bom/bom.csv)
+[bom_file](./BOM/BOM.csv)
 
 **Optimized BOM**
-[optimized_bom_file](./bom/optimized_bom.csv)
+[optimized_bom_file](./BOM/bom_optimised.csv)
 
 ## 5. Video Demonstration
 
-[recorded_video](./video/IMG_2105.mov)
+[recorded_video](./Video/coursework_2_video.mp4)
 
 
 ## 6. Design
-[design_document](./design/project_design_tpl.md)
+[design_document](./Design/project_design.md)
